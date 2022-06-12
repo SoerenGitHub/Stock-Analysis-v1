@@ -1,0 +1,26 @@
+{
+    "menus": {
+        "topmenu": {
+            "private": "Privat",
+            "public": "Öffentlich",
+            "settings": "Einstellungen"
+        },
+        "sidemenu": {
+            "private": {
+                "dashboard": "Dashboard",
+                "ticker": "Ticker",
+                "chart": "Chart",
+                "analysis": "Analysen"
+            },
+            "public": {},
+            "settings": {}
+        },
+        "usermenu": {
+            "privacy": "Datenschutz",
+            "disclaimer": "Haftungsausschluss",
+            "profileSettings": "Profil-Einstellungen",
+            "logout": "Ausloggen"
+        }
+    },
+    "search": "Suche"
+}

@@ -1,0 +1,22 @@
+<div class="fixed top-0 left-0 right-0 bottom-0">
+    <app-topmenu>
+      <app-topmenu-item [active]="true" [title]="'menus.topmenu.private'"></app-topmenu-item>
+      <app-topmenu-item [title]="'menus.topmenu.public'"></app-topmenu-item>
+      <app-topmenu-item [title]="'menus.topmenu.settings'"></app-topmenu-item>
+    </app-topmenu>
+    <app-sidemenu>
+      <ng-container menuItems>
+        <li app-sidemenu-item [routerLink]="'#'" [title]="'menus.sidemenu.private.dashboard' | transloco" [icon]="'./assets/ui/dashboard.svg'"></li>
+        <li app-sidemenu-item [routerLink]="'#'" [title]="'menus.sidemenu.private.chart' | transloco" [icon]="'./assets/ui/chart.svg'"></li>
+        <li app-sidemenu-item [routerLink]="'#'" [title]="'menus.sidemenu.private.ticker' | transloco" [icon]="'./assets/ui/ticker.svg'" [badge]="3"></li>
+        <li app-sidemenu-item [routerLink]="'#'" [title]="'menus.sidemenu.private.analysis' | transloco" [icon]="'./assets/ui/analysis.svg'" [badge]="'pro' | transloco"></li>
+      </ng-container>
+      <div class="bg-gray-100 h-full">
+        <app-breadcrumb></app-breadcrumb>
+        <div class="px-3">
+          <ng-content></ng-content>
+          <app-stock-info [title]="'Microsoft'" [text]="'Tolle Aktie'" (clickAction)="onStockInfoClicked()"></app-stock-info>
+        </div>
+      </div>
+    </app-sidemenu>
+</div>
