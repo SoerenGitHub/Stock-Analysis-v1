@@ -14,6 +14,9 @@ class Stock:
     def request_history(self):
         ticker = yf.Ticker(str(self.__symbol))
         self.__history = ticker.history(period="10y", interval="1d")
+        
+    def add_to_history(self, series: Series, col_name: str):
+        self.__history.loc[:,col_name] = series
 
     #region Getter/Setter
 

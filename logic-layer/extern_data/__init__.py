@@ -1,0 +1,1 @@
+from extern_data.stock import Stock

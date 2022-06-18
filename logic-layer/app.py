@@ -1,23 +1,16 @@
-import time
+from controller import *
 
-import redis
-from flask import Flask
 
-app = Flask(__name__)
-cache = redis.Redis(host='redis', port=6379)
+#byd = Stock('BYD', 'BY6.F')
+#byd.request_history()
 
-def get_hit_count():
-    retries = 5
-    while True:
-        try:
-            return cache.incr('hits')
-        except redis.exceptions.ConnectionError as exc:
-            if retries == 0:
-                raise exc
-            retries -= 1
-            time.sleep(0.5)
+#ema = ExpotentialMovingAverageAnalysis(byd.get_history(), 200).ema()
+#byd.add_to_history(ema, 'Expotential Moving Average')
 
-@app.route('/')
-def hello():
-    count = get_hit_count()
-    return 'Hello World! I have been seen {} times.\n'.format(count)
+#sma = SimpleMovingAverageAnalysis(byd.get_history(), 200).sma()
+#byd.add_to_history(sma, 'Simple Moving Average')
+
+#history = byd.get_history()
+#display(history)
+
+
