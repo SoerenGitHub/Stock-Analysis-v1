@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
 import { TopmenuItemComponent } from './app-shell/topmenu-item/topmenu-item.component';
 import { StockInfoComponent } from './components/stock-info/stock-info.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { StockInfoComponent } from './components/stock-info/stock-info.component
     UsermenuComponent,
     BreadcrumbComponent,
     TopmenuItemComponent,
-    StockInfoComponent
+    StockInfoComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,

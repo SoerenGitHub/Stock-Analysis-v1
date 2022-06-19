@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChartConfiguration } from 'chart.js';
+import { chart } from 'src/globals/enums/chart.enum';
 
 @Component({
   selector: 'app-stock-info',
@@ -15,6 +17,8 @@ export class StockInfoComponent implements OnInit {
 
   @Output()
   clickAction = new EventEmitter<void>();
+
+  chartType = chart.line;
 
   constructor() { }
 
