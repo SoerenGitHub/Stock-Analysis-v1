@@ -13,8 +13,10 @@ class IndicatorController(Resource):
     self.factory = IndicatorFactory()
   
   def get(self, symbol, indicator):    
+    interval = request.args.get("interval", default='1d', type=str)
+    period = request.args.get("period", default='5y', type=str)
     stock = Stock('Stock', symbol)
-    stock.request_history()
+    stock.request_history(interval, period)
     
     indicator = self.factory.create(indicator)
     

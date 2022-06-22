@@ -11,9 +11,9 @@ class Stock:
         self.__name = name
         self.__symbol = symbol
 
-    def request_history(self):
+    def request_history(self, interval: str, period: str):
         ticker = yf.Ticker(str(self.__symbol))
-        self.__history = ticker.history(period="10y", interval="1d")
+        self.__history = ticker.history(period, interval)
         
     def add_to_history(self, series: Series, col_name: str):
         self.__history.loc[:,col_name] = series
