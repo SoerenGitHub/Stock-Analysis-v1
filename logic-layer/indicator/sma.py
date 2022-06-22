@@ -14,4 +14,4 @@ class SimpleMovingAverageAnalysis(Indicator):
             index = history.index[i]
             SMA = SMA.append(pd.Series([history[i-past_duration:i].sum()/past_duration], index=[index]))
         SMA[0:past_duration]=SMA[past_duration+1]
-        return SMA
+        return pd.DataFrame({'date':SMA.index, 'sma':SMA.values})

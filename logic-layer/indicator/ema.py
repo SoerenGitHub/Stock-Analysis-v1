@@ -5,7 +5,7 @@ from .indicator import Indicator
 
 class ExpotentialMovingAverageAnalysis(Indicator):
 
-    def get_result(self, history: pd.Series, args: Any) -> pd.Series:
+    def get_result(self, history: pd.DataFrame, args: Any) -> pd.DataFrame:
         history = history['Close']
         past_duration = args.get("duration", default=200, type=int)
         if(len(history) < 201):
@@ -18,4 +18,4 @@ class ExpotentialMovingAverageAnalysis(Indicator):
         for i in range(1,len(history)):
             index = history.index[i]
             EMA = EMA.append(pd.Series([EMA[i-1]+SF*(history[i]-EMA[i-1])], index=[index]))
-        return EMA
+        return pd.DataFrame({'date':EMA.index, 'ema':EMA.values})

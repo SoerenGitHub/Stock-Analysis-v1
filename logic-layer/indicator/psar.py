@@ -5,11 +5,11 @@ from .indicator import Indicator
 
 class ParabolicSARAnalysis(Indicator):
 
-    def get_result(self, history: pd.Series, args: Any):
+    def get_result(self, history: pd.DataFrame, args: Any):
         iaf = args.get("iaf", default=0.02, type=float)
         maxaf = args.get("maxaf", default=0.2, type=float)
         length = len(history)
-        dates = list(history['Date'])
+        dates = list(history.index)
         high = list(history['High'])
         low = list(history['Low'])
         close = list(history['Close'])
@@ -62,4 +62,5 @@ class ParabolicSARAnalysis(Indicator):
                 psarbull[i] = psar[i]
             else:
                 psarbear[i] = psar[i]
-        return {"dates":dates, "high":high, "low":low, "close":close, "psar":psar, "psarbear":psarbear, "psarbull":psarbull}
+        data = {"date":dates, "psar":psar, "psarbear":psarbear, "psarbull":psarbull}
+        return pd.DataFrame(data, columns=['date', 'psar', 'psarbear', 'psarbull'])
