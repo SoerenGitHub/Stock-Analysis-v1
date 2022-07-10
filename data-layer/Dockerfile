@@ -1,17 +1,30 @@
-FROM node:alpine
+FROM node:12.19.0-alpine3.9 AS development
 
-USER node
+WORKDIR /usr/src/app
 
-RUN mkdir /home/node/app
-WORKDIR /home/node/app
-COPY . /home/node/app
-RUN npm install --production
+COPY package*.json ./
 
-# CMD [ "npm", "start" ]
-CMD ["node", "dist/server.js"]
-EXPOSE 3000
+RUN npm install glob rimraf
 
-# Install development packages if NODE_ENV is set to "development"
-ARG NODE_ENV
-ENV NODE_ENV $NODE_ENV
-RUN if [ "$NODE_ENV" == "development" ]; then npm install ; fi
+RUN npm install --only=development
+
+COPY . .
+
+RUN npm run build
+
+FROM node:12.19.0-alpine3.9 as production
+
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install --only=production
+
+COPY . .
+
+COPY --from=development /usr/src/app/dist ./dist
+
+CMD ["node", "dist/main"]

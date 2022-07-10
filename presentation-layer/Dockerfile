@@ -1,14 +1,12 @@
-# build stage
-FROM node:lts-alpine as build-stage
-WORKDIR /app
-COPY ./package*.json ./
-RUN npm install
-COPY . ./
-RUN npm run build
+FROM node:14.2.0-alpine3.11 as production
+WORKDIR /usr/src/app
 
-# production stage
-FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
-EXPOSE 80
-EXPOSE 443
-CMD ["nginx", "-g", "daemon off;"]
+RUN npm install -g @angular/cli
+
+COPY ./package.json .
+RUN npm install
+COPY . .
+RUN ng build
+
+FROM nginx as runtime
+COPY --from=build /usr/src/app/dist /usr/share/nginx/html
