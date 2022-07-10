@@ -7,7 +7,7 @@
       <div class="text-sm lg:flex-grow">
         <ng-content></ng-content>
       </div>
-      <app-textbox class="mr-10"></app-textbox>
+      <app-textbox appReactiveControl="search" (controlChange)="searchAction.emit($event)" class="mr-10"></app-textbox>
       <app-usermenu class="mr-5"></app-usermenu>
     </div>
   </nav>

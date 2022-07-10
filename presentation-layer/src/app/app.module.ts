@@ -3,38 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopmenuComponent } from './app-shell/topmenu/topmenu.component';
-import { SidemenuComponent } from './app-shell/sidemenu/sidemenu.component';
-import { AppShellComponent } from './app-shell/app-shell/app-shell.component';
-import { SidemenuItemComponent } from './app-shell/sidemenu-item/sidemenu-item.component';
-import { TextboxComponent } from './components/textbox/textbox.component';
-import { UsermenuComponent } from './app-shell/usermenu/usermenu.component';
-import { BreadcrumbComponent } from './app-shell/breadcrumb/breadcrumb.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
-import { TopmenuItemComponent } from './app-shell/topmenu-item/topmenu-item.component';
 import { StockInfoComponent } from './components/stock-info/stock-info.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { StockListComponent } from './components/stock-list/stock-list.component';
+import { StockListItemComponent } from './components/stock-list-item/stock-list-item.component';
+import { PageSearchComponent } from './pages/page-search/page-search.component';
+import { UiControlsModule } from './ui/ui-controls/ui-controls.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FeatureAppShellModule } from './feature/feature-app-shell/feature-app-shell.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopmenuComponent,
-    SidemenuComponent,
-    AppShellComponent,
-    SidemenuItemComponent,
-    TextboxComponent,
-    UsermenuComponent,
-    BreadcrumbComponent,
-    TopmenuItemComponent,
     StockInfoComponent,
-    ChartComponent
+    ChartComponent,
+    StockListComponent,
+    StockListItemComponent,
+    PageSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    TranslocoRootModule
+    TranslocoRootModule,
+    BrowserAnimationsModule,
+
+    UiControlsModule,
+    FeatureAppShellModule
   ],
   bootstrap: [AppComponent]
 })

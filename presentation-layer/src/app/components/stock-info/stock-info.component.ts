@@ -15,18 +15,11 @@ export class StockInfoComponent implements OnInit {
   @Input()
   public text?: string;
 
-  @Output()
-  clickAction = new EventEmitter<void>();
-
   chartType = chart.line;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onClick() {
-    this.clickAction.emit();
   }
 
 }

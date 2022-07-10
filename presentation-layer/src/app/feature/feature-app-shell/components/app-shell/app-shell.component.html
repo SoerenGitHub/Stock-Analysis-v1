@@ -1,5 +1,5 @@
 <div class="fixed top-0 left-0 right-0 bottom-0">
-    <app-topmenu>
+    <app-topmenu (searchAction)="onSearch($event)">
       <app-topmenu-item [active]="true" [title]="'menus.topmenu.private'"></app-topmenu-item>
       <app-topmenu-item [title]="'menus.topmenu.public'"></app-topmenu-item>
       <app-topmenu-item [title]="'menus.topmenu.settings'"></app-topmenu-item>
@@ -13,9 +13,9 @@
       </ng-container>
       <div class="bg-gray-100 h-full">
         <app-breadcrumb></app-breadcrumb>
-        <div class="px-3">
+        <div class="px-3 relative">
           <ng-content></ng-content>
-          <app-stock-info [title]="'Microsoft'" [text]="'Tolle Aktie'" (clickAction)="onStockInfoClicked()"></app-stock-info>
+          <app-page-search #searchPage></app-page-search>
         </div>
       </div>
     </app-sidemenu>
